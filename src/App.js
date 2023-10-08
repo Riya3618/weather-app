@@ -1,39 +1,42 @@
 import './App.css';
-import React,{useState,useEffect} from 'react';
 import WeatherCard from './components/Weather';
-import axios from 'axios';
 import { Dimmer, Loader } from 'semantic-ui-react';
-
+import useWeatherData from './utils/useWeatherData';
+// const AppLayout=()=>{
+//   return (<React.Fragment>
+//     <Header />
+//     <Body />
+//     <Footer />
+//   </React.Fragment>);
+// };
 function App() {
-  const [lat, setLat] = useState([]);
-  const [long, setLong] = useState([]);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
-      });
-      if(lat!=null && long!=null){
-      await fetch(`${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
-      .then(res => res.json())
-      .then(result => {
-        setData(result)
-        console.log(result);
-      });
-    }}
-    fetchData();
-  }, [lat,long])
+  const { data} = useWeatherData();
+  // const AppRouter=createBrowserRouter([
+  //   path
+  // ])
   
-  return (
-    <div className="App">
-      {(typeof data.main !='undefined')?(<WeatherCard weatherData={data} />):(<div><Dimmer active>
-            <Loader>Loading...</Loader>
-          </Dimmer></div>)}
-    </div>
-  );
+  if (data === null) {
+    // Data is still loading, show loading indicator
+    return (
+      <div className="App">
+        <Dimmer active>
+          <Loader>Loading...</Loader>
+        </Dimmer>
+      </div>
+    );
+  }
 
+  if (typeof data.main !== 'undefined') {
+    // Data has been loaded, render WeatherCard
+    return (
+      <div className="App">
+        <WeatherCard weatherData={data} />
+      </div>
+    );
+  } else {
+    // Data is available but doesn't contain 'main', handle this case
+    return <div>No weather data available.</div>;
+  }
 }
 
 export default App;
