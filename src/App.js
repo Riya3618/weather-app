@@ -8,18 +8,18 @@ function App() {
   const { data} = useWeatherData();
   
   
-  if (data === null) {
-    // Data is still loading, show loading indicator
-    return (
-      <div className="App">
-        <Dimmer active>
-          <Loader>Loading...</Loader>
-        </Dimmer>
-      </div>
-    );
-  }
+  // if (data === null) {
+  //   // Data is still loading, show loading indicator
+  //   return (
+  //     <div className="App">
+  //       <Dimmer active>
+  //         <Loader>Loading...</Loader>
+  //       </Dimmer>
+  //     </div>
+  //   );
+  // }
 
-  if (typeof data.main !== 'undefined') {
+  if (data!=null && typeof data.main !== 'undefined') {
     // Data has been loaded, render WeatherCard
     return (
       <div className="App">
@@ -28,7 +28,7 @@ function App() {
       </div>
     );
   } else {
-    return <div><Header /><p>No weather data available.</p></div>;
+    return <div className="App"><Header /></div>;
   }
 }
 
