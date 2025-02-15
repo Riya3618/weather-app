@@ -2,18 +2,11 @@ import './App.css';
 import WeatherCard from './components/Weather';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import useWeatherData from './utils/useWeatherData';
-// const AppLayout=()=>{
-//   return (<React.Fragment>
-//     <Header />
-//     <Body />
-//     <Footer />
-//   </React.Fragment>);
-// };
+import Header from './components/Header';
+
 function App() {
   const { data} = useWeatherData();
-  // const AppRouter=createBrowserRouter([
-  //   path
-  // ])
+  
   
   if (data === null) {
     // Data is still loading, show loading indicator
@@ -30,12 +23,12 @@ function App() {
     // Data has been loaded, render WeatherCard
     return (
       <div className="App">
+        <Header />
         <WeatherCard weatherData={data} />
       </div>
     );
   } else {
-    // Data is available but doesn't contain 'main', handle this case
-    return <div>No weather data available.</div>;
+    return <div><Header /><p>No weather data available.</p></div>;
   }
 }
 
