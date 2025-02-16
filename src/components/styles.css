@@ -1,66 +1,224 @@
 @import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
+:root {
+    --main-width: 43.75rem; 
+    --border-radius: 1.25rem;
+    --top-height: 3.75rem; 
+    --padding: 0.625rem; 
+    --header-font-size: 1.5625rem; 
+    --day-padding: 0.9375rem; 
+    --temp-font-size: 1.125rem;
+    --sunrise-sunset-font-size: 1.125rem; 
+    --input-width: 18.75rem;
+    --input-padding: 0.625rem;
+    --button-padding: 0.625rem 1.25rem; 
+    --logo-width: 18.75rem;
+    --margin-bottom: 1.25rem; 
 
-.main{
-    width: 700px;
-    border-radius: 20px;
-    background-color: #01579b;
+    /* Light mode colors */
+    --background-color-light: #f0f0f0;
+    --text-color-light: #000000;
+    --card-background-color-light: #ffffff;
+    --card-header-background-color-light: #e0e0e0;
+
+    /* Dark mode colors */
+    --background-color-dark: #121212;
+    --text-color-dark: #ffffff;
+    --card-background-color-dark: #424242;
+    --card-header-background-color-dark: #333333;
 }
 
-.top{
-    height: 60px;
-    background-color: #424242;
-    color: whitesmoke;
-    padding: 10px;
-    border-radius: 20px 20px 0 0;
+body {
+    margin: 0;
     font-family: 'Recursive', sans-serif;
+    background-color: #f0f0f0;
+    color: #000000;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.App {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 1.25rem;
+    position: relative;
 }
-
-.header{
-    background-color: #424242;
-    color: whitesmoke;
-    margin: 20px 0px 0px 20px;
-    font-size: 25px;
-    border-radius: 20px 20px 0 0;
-    font-family: 'Recursive', sans-serif;
-}
-
-.day{
-    padding: 15px;
-    color: whitesmoke;
-    font-family: 'Recursive', sans-serif;
-    font-size: 24px;
-    font-weight: 600;
-}
-
-.temp{
-    padding: 15px;
-    color: whitesmoke;
-    font-family: 'Recursive', sans-serif;
-    font-size: 18px;
-}
-
-.flex{
+.weather-cards-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
-
-.sunrise-sunset{
-    padding: 15px;
-    color: whitesmoke;
-    font-family: 'Recursive', sans-serif;
-    font-size: 16px;
-}
-
 .description{
-    padding: 15px;
-    color: whitesmoke;
-    font-family: 'Recursive', sans-serif;
-    font-size: 24px;
-    font-weight: 600;
+     padding: var(--day-padding); 
+     font-size: var(--temp-font-size);
 }
-.button{
-    width: 35px;
-    height: 35px;
+.day{
+    font-size: var(--temp-font-size);
+}
+body.light-mode.description {
+    color: #000000; 
+   
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; 
+}
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--margin-bottom);
+    width: 100%; 
+}
+
+header img {
+    width: var(--logo-width);
+    margin-bottom: var(--margin-bottom);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header input {
+    padding: var(--input-padding);
+    font-size: 1rem; 
+    width: var(--input-width);
+    margin-bottom: 0.625rem;
+}
+
+header button {
+    padding: var(--button-padding);
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 0.625rem;
+}
+
+main {
+    width: 100%;
+    max-width: 37.5rem; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main {
+    width: var(--main-width);
+    border-radius: var(--border-radius);
+    background-color: #ffffff;
+}
+
+body.dark-mode .main {
+    background-color: #424242;
+}
+
+.top {
+    height: var(--top-height);
+    background-color: #e0e0e0;
+    color: #000000;
+    padding: var(--padding);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    font-family: 'Recursive', sans-serif;
+    display: flex;
+    justify-content: space-between;
+}
+
+body.dark-mode .top {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.header {
+    background-color: #e0e0e0;
+    color: #000000;
+    margin: 1.25rem 0 0 1.25rem; 
+    font-size: var(--header-font-size);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    font-family: 'Recursive', sans-serif;
+}
+
+body.dark-mode .header {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.day {
+    padding: var(--day-padding);
+    color: #000000;
+    font-family: 'Recursive', sans-serif;
+}
+
+body.dark-mode .day {
+    color: #ffffff;
+}
+
+.temp {
+    padding: var(--day-padding);
+    color: #000000;
+    font-family: 'Recursive', sans-serif;
+    font-size: var(--temp-font-size);
+}
+
+body.dark-mode .temp {
+    color: #ffffff;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sunrise-sunset {
+    padding: var(--day-padding);
+    color: #000000;
+    font-family: 'Recursive', sans-serif;
+    font-size: var(--sunrise-sunset-font-size);
+}
+
+body.dark-mode .sunrise-sunset {
+    color: #ffffff;
+}
+.toggle-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem; 
+    width: 2.5rem; 
+    height: 2.5rem; 
+    border-radius: 50%;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem; 
+}
+body.dark-mode .toggle-button {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.toggle-button:hover::after {
+    content: attr(data-hover-text);
+    position: absolute;
+    top: 3rem; 
+    right: 0;
+    background-color: #333333;
+    color: #ffffff;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    font-size: 0.875rem;
+}
+
+body.dark-mode .toggle-button:hover::after {
+    background-color: #ffffff;
+    color: #333333;
 }
