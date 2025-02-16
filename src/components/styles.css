@@ -54,12 +54,24 @@ body.dark-mode {
     align-items: center;
     width: 100%;
 }
+.weather-icon {
+    width: auto; 
+    height: auto; 
+    margin-right: 0.5rem; 
+    vertical-align: middle;
+}
 .description{
      padding: var(--day-padding); 
      font-size: var(--temp-font-size);
+     display: inline-flex;
+     align-items: center;    
 }
 .day{
     font-size: var(--temp-font-size);
+}
+.day-description {
+    display: flex;
+    align-items: center;
 }
 body.light-mode.description {
     color: #000000; 
